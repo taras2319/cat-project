@@ -1,0 +1,134 @@
+/* Головна сторінка */
+h2 {
+    font-size: 2.5rem;
+    color: #007bff;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #0056b3;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #333;
+}
+
+footer {
+    background: #000;
+    color: #fff;
+    font-size: 0.9rem;
+}
+/* Header */
+header {
+    background: #ffffff; /* Білий фон */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легка тінь */
+}
+
+header .navbar-brand {
+    font-size: 1.5rem; /* Розмір назви сайту */
+}
+
+header .nav-link {
+    font-size: 1rem;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+header .nav-link:hover {
+    color: #007bff; /* Синій текст при наведенні */
+}
+
+/* Логотип */
+header img {
+    height: 40px; /* Висота логотипу */
+    border-radius: 10%; /* Круглий логотип */
+}
+
+/* Героїчний блок */
+.hero {
+    background: #f8f9fa; /* Світло-сірий фон */
+    padding: 60px 0;
+}
+
+.hero h1 {
+    font-size: 2.8rem; /* Великий розмір тексту */
+    color: #007bff; /* Синій акцент */
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #6c757d; /* Тьмяний текст */
+}
+/* Секція "Галерея котиків" */
+#gallery h2 {
+    font-size: 2rem;
+    color: #007bff; /* Синій заголовок */
+}
+
+#gallery p {
+    font-size: 1.2rem;
+    color: #6c757d; /* Тьмяний текст */
+}
+.equal-height {
+    max-height: 179px; /* Встанови бажану максимальну висоту */
+}
+/* Стиль для зображень */
+#gallery .card {
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#gallery .card:hover {
+    transform: scale(1.05); /* Легке збільшення при наведенні */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Більша тінь */
+}
+
+#gallery img {
+    border-radius: 10px; /* Округлені кути */
+    max-height: 300px;
+    object-fit: cover; /* Зображення завжди заповнює картку */
+}
+.hero img {
+    max-width: 100%; /* Зображення повністю адаптивне */
+    border-radius: 10px; /* Злегка округлені краї */
+}
+
+
+/*//////////
+*/
+/* Налаштування заголовків */
+h1 {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Дизайн кнопок */
+.btn {
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* Анімація появи карток */
+.card {
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+
+
+
+/* Глобальні стилі */
+body {
+    font-family: 'Arial', sans-serif;
+}
+
