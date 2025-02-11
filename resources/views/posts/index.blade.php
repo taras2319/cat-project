@@ -28,6 +28,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрити"></button>
                 </div>
                 <div class="modal-body">
+                    @csrf
                     <form id="postForm">
                         <div class="mb-3">
                             <label for="postTitle" class="form-label">Заголовок</label>

@@ -38,14 +38,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.log("✅ Пост збережено успішно!");
 
                     // Очищуємо поля форми
-                    document.getElementById("postTitle").value = "";
-                    document.getElementById("postContent").value = "";
+                    //document.getElementById("postTitle").value = "";
+                    //document.getElementById("postContent").value = "";
 
                     // Закриваємо модальне вікно
-                    let modal = bootstrap.Modal.getInstance(document.getElementById("postModal"));
-                    modal.hide();
+                    //let modal = bootstrap.Modal.getInstance(document.getElementById("postModal"));
+                    //modal.hide();
                     // Оновлюємо сторінку
-                    location.reload();// Оновлює сторінку повністю
+                    //location.reload(); Оновлює сторінку повністю
                 })
                 .catch(error => {
                     console.error("❌ Помилка запиту:", error);

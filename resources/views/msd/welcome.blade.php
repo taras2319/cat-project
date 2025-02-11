@@ -114,8 +114,21 @@
 
         </div>
     </section>
+
+    <section class="py-5 bg-white">
+        <div class="container text-center">
+            <h2 class="fw-bold text-primary mb-4">Добав свого котика до нас нас в галерею!</h2>
+            <p class="text-muted mb-3">
+                Ми створили форму, щоб ви змогли добавити свої котиків🐱
+            </p>
+            <div class="align-items-center">
+                <a href="{{ route('cats.form') }}" class="btn btn-outline-primary btn-lg">Заповнити</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Секція "Контакти" -->
-    <section id="contact" class="py-5 bg-white">
+    <section id="contact" class="py-5 bg-light">
         @if (session('success'))
             <div class="alert alert-success text-center">
                 {{ session('success') }}
@@ -128,7 +141,7 @@
             </p>
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <form action="{{ route('contact.submit') }}" method="POST" class="shadow-sm p-4 rounded">
+                    <form action="{{ route('contact.submit') }}" method="POST" class="shadow-sm p-4 rounded bg-white">
                         @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label">Ваше ім’я</label>
@@ -171,21 +184,21 @@
             <div class="row g-4 gallery">
                 <div class="col-md-4">
                     <div class="card shadow-sm border-0">
-                        <a href="{{ asset('images/goose-1.jpg') }}" data-fancybox="gallery" data-title="Мій милий гусь 1">
+                        <a href="{{ asset('images/goose-1.jpg') }}" data-fancybox="gallery-goose" data-title="Мій милий гусь 1">
                             <img src="{{ asset('images/goose-1.jpg') }}" class="card-img-top rounded" alt="Cute goose 1">
                         </a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card shadow-sm border-0">
-                        <a href="{{ asset('images/goose-2.jpg') }}" data-fancybox="gallery" data-title="Мій милий гусь 2">
+                        <a href="{{ asset('images/goose-2.jpg') }}" data-fancybox="gallery-goose" data-title="Мій милий гусь 2">
                             <img src="{{ asset('images/goose-2.jpg') }}" class="card-img-top rounded" alt="Cute goose 2">
                         </a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card shadow-sm border-0">
-                        <a href="{{ asset('images/goose-3.jpg') }}" data-fancybox="gallery" data-title="Мій милий гусь 3">
+                        <a href="{{ asset('images/goose-3.jpg') }}" data-fancybox="gallery-goose" data-title="Мій милий гусь 3">
                             <img src="{{ asset('images/goose-3.jpg') }}" class="card-img-top rounded" alt="Cute goose 3">
                         </a>
                     </div>
@@ -196,33 +209,6 @@
     </section>
 
 
-    <section>
-    <h1>Додати фото котика</h1>
 
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
-
-    <form action="{{ route('cats.form') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="mb-3">
-            <label for="name" class="form-label">Ім'я котика</label>
-            <input type="text" class="form-control" id="name" name="name" required>
-        </div>
-        <div class="mb-3">
-            <label for="category" class="form-label">Категорія</label>
-            <select class="form-select" id="category" name="category" required>
-                <option value="Мої котики">Мої котики</option>
-                <option value="Вуличні котики">Вуличні котики</option>
-                <option value="Кумедні моменти">Кумедні моменти</option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="image" class="form-label">Фото</label>
-            <input type="file" class="form-control" id="image" name="image" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Додати</button>
-    </form>
-    </section>
 @endsection
 
