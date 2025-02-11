@@ -22,6 +22,27 @@
             <span class="fw-bold text-primary">Мій котячий сайт</span>
         </a>
 
+
+        <div>
+        @if(Auth::check())
+            <p>Привіт, {{ Auth::user()->name }}!</p>
+
+
+                    <li>
+                        <a class="dropdown-item"  href="{{ route('profile') }}">Профіль</a>
+                    </li>
+                    <li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Вийти</a>
+                    </li>
+
+        @else
+            <a href="{{ route('login') }}" class="btn btn-primary">Увійти</a>
+            <a href="{{ route('register') }}" class="btn btn-secondary">Зареєструватися</a>
+        @endif
+        </div>
         <!-- Меню (кнопка для мобільних пристроїв) -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>

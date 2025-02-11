@@ -1,4 +1,12 @@
 <?php
+
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    return view('msd.welcome');
+})->name('home');
+
 use App\Http\Controllers\PostController;
 
 
@@ -11,7 +19,6 @@ Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.
 
 
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 
 Route::post('/contact-submit', [ContactController::class, 'submit'])->name('contact.submit');
@@ -22,9 +29,15 @@ Route::get('/form', [CatController::class, 'showForm'])->name('cats.form');
 Route::get('/cats', [CatController::class, 'index'])->name('cats.index');
 Route::post('/cats', [CatController::class, 'store'])->name('cats.store');
 
-
-Route::get('/', function () {
+Route::get('/dashboard', function () {
     return view('msd.welcome');
-})->name('home');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
+require __DIR__.'/auth.php';
