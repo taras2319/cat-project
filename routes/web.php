@@ -18,7 +18,7 @@ Route::post('/contact-submit', [ContactController::class, 'submit'])->name('cont
 
 
 use App\Http\Controllers\CatController;
-
+Route::get('/form', [CatController::class, 'showForm'])->name('cats.form');
 Route::get('/cats', [CatController::class, 'index'])->name('cats.index');
 Route::post('/cats', [CatController::class, 'store'])->name('cats.store');
 

@@ -203,7 +203,7 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <form action="{{ route('cats.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('cats.form') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Ім'я котика</label>

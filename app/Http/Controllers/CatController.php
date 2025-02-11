@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class CatController extends Controller
 {
+    public function showForm()
+    {
+        return view('cats.form'); // Повертаємо вигляд із формою
+    }
     // Метод для завантаження фото
     public function store(Request $request)
     {
@@ -26,7 +30,7 @@ class CatController extends Controller
             'image' => $path,
         ]);
 
-        return back()->with('success', 'Фото котика додано!');
+        return redirect()->route('cats.index')->with('success', 'Фото котика додано!');
     }
 
     // Метод для відображення галереї з фільтрацією
