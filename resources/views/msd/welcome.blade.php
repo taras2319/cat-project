@@ -162,18 +162,18 @@
         </div>
     </section>
 
-    <section class="py-5 bg-white">
+    <!--<section class="py-5 bg-white">
         <div class="container text-center">
             <h2 class="fw-bold text-primary mb-4">Список наших котиків</h2>
             <p class="text-muted mb-3">
                 Ми створили форму, щоб ви змогли добавити свої котиків🐱
             </p>
             <div class="align-items-center">
-                <a href="{{ route('posts.index') }}" class="btn btn-outline-primary btn-lg">Заповнити</a>
+                <a href="{ route('posts.index') }}" class="btn btn-outline-primary btn-lg">Заповнити</a>
             </div>
         </div>
-    </section>
-
+    </section>-->
+&
     <!-- Секція "Галерея кото-гусі" -->
     <section id="gallery" class="py-5 bg-light">
         <div class="container">
