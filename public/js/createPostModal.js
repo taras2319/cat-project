@@ -1,30 +1,28 @@
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("✅ createPostModal.js завантажено!");
-
-    document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
+        console.log("✅ createPostModal.js завантажено!");
         const postForm = document.getElementById("postForm");
 
         if (postForm) {
-            postForm.addEventListener("submit", function (e) {
+            console.log("Форма знайдена!");
+            postForm.addEventListener("submit", (e) => {
                 e.preventDefault();
+                console.log("Подія submit перехоплена!");
                 // Логіка форми
-            });
-        } else {
-            console.error("❌ Елемент #postForm не знайдено!");
-        }
 
-        let title = document.getElementById("postTitle").value;
-        let content = document.getElementById("postContent").value;
-        let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
 
-        fetch("/posts", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": csrfToken
-            },
-            body: JSON.stringify({ title: title, content: content })
-        })
+                // Ваш код для обробки форми
+                let title = document.getElementById("postTitle").value;
+                let content = document.getElementById("postContent").value;
+                let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+
+                fetch("/posts", {
+                    method: "POST",
+                    headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": csrfToken
+                    },
+                    body: JSON.stringify({ title: title, content: content })
+                })
 
 
                 .then(response => {
@@ -38,22 +36,22 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.log("✅ Пост збережено успішно!");
 
                     // Очищуємо поля форми
-                    //document.getElementById("postTitle").value = "";
-                    //document.getElementById("postContent").value = "";
+                    document.getElementById("postTitle").value = "";
+                    document.getElementById("postContent").value = "";
 
                     // Закриваємо модальне вікно
-                    //let modal = bootstrap.Modal.getInstance(document.getElementById("postModal"));
-                    //modal.hide();
+                    let modal = bootstrap.Modal.getInstance(document.getElementById("postModal"));
+                    modal.hide();
                     // Оновлюємо сторінку
-                    //location.reload(); Оновлює сторінку повністю
+                    location.reload(); //Оновлює сторінку повністю
                 })
                 .catch(error => {
                     console.error("❌ Помилка запиту:", error);
                     alert("Сталася помилка. Спробуйте знову."); // Виводимо повідомлення про помилку
                 });
         });
-
-    });
-
-
+        } else {
+            console.error("❌ Елемент #postForm не знайдено!");
+        }
+});
 

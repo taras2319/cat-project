@@ -8,21 +8,27 @@
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
-        <form method="POST" action="{{ route('profile.update') }}" class="shadow-sm p-4 rounded">
-            @csrf
-            @method('PATCH')
-            <div class="mb-3">
-                <label for="name" class="form-label">Ваше ім'я</label>
-                <input id="name" type="text" name="name" value="{{ old('name', $user->name) }}" class="form-control" required>
+        <!-- Форма оновлення інформації профілю -->
+        <div class="mt-2 p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+            <div class="max-w-xl">
+                @include('profile.partials.update-profile-information-form')
             </div>
+        </div>
 
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input id="email" type="email" name="email" value="{{ old('email', $user->email) }}" class="form-control" required>
+        <!-- Форма оновлення пароля -->
+        <div class="mt-2 p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+            <div class="max-w-xl">
+                @include('profile.partials.update-password-form')
             </div>
+        </div>
 
-            <button type="submit" class="btn btn-primary w-100">Оновити</button>
-        </form>
+        <!-- Форма видалення користувача -->
+        <div class="mt-2 p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+            <div class="max-w-xl">
+                @include('profile.partials.delete-user-form')
+            </div>
+        </div>
+
     </div>
-
+    <script src="//unpkg.com/alpinejs" defer></script>
 @endsection

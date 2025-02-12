@@ -6,7 +6,6 @@
     @if (session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
-
     <div class="d-flex flex-column justify-content-center align-items-center mb-4">
         <!-- Заголовок -->
         <div class="col-md-8">
@@ -91,5 +90,7 @@
         {{ $posts->links() }}
     </div> <!-- Pagination -->
 
+    <script src="{{ asset('js/createPostModal.js') }}"></script>
+    <script src="{{ asset('js/viewPostModal.js') }}"></script>
 @endsection
 

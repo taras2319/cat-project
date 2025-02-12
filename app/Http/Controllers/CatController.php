@@ -17,7 +17,7 @@ class CatController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'category' => 'required|string|in:Мої котики,Вуличні котики,Кумедні моменти',
-            'image' => 'required|image|max:2048',
+            'image' => 'required|image|max:10240',
         ]);
 
         // Збереження фото в папці storage/app/public

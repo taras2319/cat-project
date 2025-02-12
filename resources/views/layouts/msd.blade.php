@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0.31/dist/fancybox.css">
 
     <link rel="stylesheet" href="{{ asset('css/msdstyles.css') }}">
+
 </head>
 <body>
 
@@ -40,6 +41,19 @@
                 </li>
                 <li class="nav-item">
                     <a href="#contact" class="nav-link text-dark hover-link">Контакти</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle text-dark" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Наші функції
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a href="{{ route('cats.index') }}" class="dropdown-item hover-link">Галерея ваших котиків</a></li>
+                        <li><a href="{{ route('cats.form') }}" class="dropdown-item hover-link">Добавити свого котика в галарею</a></li>
+                        <li><a href="{{ route('posts.index') }}" class="dropdown-item hover-link">Список ваших історій про котиків</a></li>
+                        <li><a href="#gallery" class="dropdown-item hover-link">Галерея наших котиків</a></li>
+                        <li><a href="#gallery-goose" class="dropdown-item hover-link">Галерея наших кото-гусів</a></li>
+
+                    </ul>
                 </li>
             </ul>
 
@@ -93,11 +107,8 @@
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Fancybox JS -->
-<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0.31/dist/fancybox.umd.js"></script>
-<script src="{{ asset('js/fancybox-init.js') }}"></script>
-<script src="{{ asset('js/createPostModal.js') }}"></script>
-<script src="{{ asset('js/viewPostModal.js') }}"></script>
+
+
 </body>
 </html>
 
