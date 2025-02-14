@@ -11,7 +11,7 @@
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Ім'я котика</label>
-            <input type="text" class="form-control" id="name" name="name" required>
+            <input type="text" class="form-control" id="title" name="title" required>
         </div>
         <div class="mb-3">
             <label for="category" class="form-label">Категорія</label>

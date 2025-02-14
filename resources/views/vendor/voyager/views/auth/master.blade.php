@@ -8,9 +8,9 @@
     <meta name="description" content="admin login">
     <title>@yield('title', 'Admin - '.Voyager::setting("admin.title"))</title>
     <link rel="stylesheet" href="{{ voyager_asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ voyager_asset('css/voyager-custom.css') }}">
     @if (__('voyager::generic.is_rtl') == 'true')
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.css">
-        <link rel="stylesheet" href="{{ voyager_asset('css/rtl.css') }}">
     @endif
     <style>
         body {
@@ -36,9 +36,10 @@
             padding:0 5px;
         }
     </style>
-    
+
     @yield('pre_css')
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 </head>
 <body class="login">
 <div class="container-fluid">

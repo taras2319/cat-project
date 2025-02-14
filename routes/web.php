@@ -24,11 +24,13 @@ use App\Http\Controllers\ContactController;
 Route::post('/contact-submit', [ContactController::class, 'submit'])->name('contact.submit');
 
 
-use App\Http\Controllers\CatController;
+use App\Http\Controllers\PhotoController;
 
-Route::get('/form', [CatController::class, 'showForm'])->name('cats.form');
-Route::get('/cats', [CatController::class, 'index'])->name('cats.index');
-Route::post('/cats', [CatController::class, 'store'])->name('cats.store');
+Route::get('/form', [PhotoController::class, 'showForm'])->name('cats.form');
+Route::get('/cats', [PhotoController::class, 'index'])->name('cats.index');
+Route::post('/cats', [PhotoController::class, 'store'])->name('cats.store');
+Route::get('/admin/photos/{id}/approve', [PhotoController::class, 'approve'])->name('photos.approve');
+Route::get('/admin/photos/{id}/reject', [PhotoController::class, 'reject'])->name('photos.reject');
 
 Route::get('/dashboard', function () {
     return view('msd.welcome');
@@ -42,3 +44,10 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
+
+
