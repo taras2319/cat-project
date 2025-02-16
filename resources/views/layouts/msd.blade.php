@@ -12,11 +12,12 @@
 
     <link rel="stylesheet" href="{{ asset('css/msdstyles.css') }}">
 
+
 </head>
-<body>
+<body >
 
 <!-- Header -->
-<header class="navbar navbar-expand-lg bg-white shadow-sm py-3">
+<header class="fixed-top navbar navbar-expand-lg bg-white shadow-sm py-3">
     <div class="container">
         <!-- Логотип і Назва -->
         <a href="{{ route('home') }}" class="navbar-brand d-flex align-items-center">
@@ -34,24 +35,22 @@
             <!-- Ліва частина: Головна, Про нас, Контакти -->
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-dark hover-link">Головна</a>
+                    <a href="{{ route('home') }}" class="nav-link text-dark hover-link">Головна</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#about" class="nav-link text-dark hover-link">Про нас</a>
+                    <a href="{{ route('home') }}#about" class="nav-link text-dark hover-link">Про нас</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#contact" class="nav-link text-dark hover-link">Контакти</a>
+                    <a href="{{ route('info.index') }}" class="nav-link text-dark hover-link">Контакти</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle text-dark" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Наші функції
+                        Меню
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                        <li><a href="{{ route('cats.index') }}" class="dropdown-item hover-link">Галерея ваших котиків</a></li>
-                        <li><a href="{{ route('cats.form') }}" class="dropdown-item hover-link">Добавити свого котика в галарею</a></li>
-                        <li><a href="{{ route('posts.index') }}" class="dropdown-item hover-link">Список ваших історій про котиків</a></li>
-                        <li><a href="#gallery" class="dropdown-item hover-link">Галерея наших котиків</a></li>
-                        <li><a href="#gallery-goose" class="dropdown-item hover-link">Галерея наших кото-гусів</a></li>
+                        <li><a href="{{ route('cats.index') }}" class="dropdown-item hover-link">Галерея котиків</a></li>
+                        <li><a href="{{ route('posts.index') }}" class="dropdown-item hover-link">Котячі історії</a></li>
+                        <li><a href="{{ route('blog.index') }}" class="dropdown-item hover-link">Корисні статті</a></li>
 
                     </ul>
                 </li>
@@ -89,12 +88,20 @@
     </div>
 </header>
 
-
+@yield('content-top')
 <!-- Main Content -->
+
 <div class="container">
     @yield('content')
 </div>
 
+@yield('content-gallery')
+
+<div class="container">
+    @yield('content-tt')
+</div>
+
+@yield('content-rr')
 <!-- Footer -->
 <footer class="bg-dark text-white text-center py-3 mt-4">
     <p>© {{ date('Y') }} Мій сайт. Усі права захищено.</p>
@@ -107,8 +114,9 @@
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-
+<script src="{{ asset('js/main.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0.31/dist/fancybox.umd.js"></script>
+<script src="{{ asset('js/fancybox-init.js') }}"></script>
 </body>
 </html>
 

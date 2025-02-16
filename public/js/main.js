@@ -24,3 +24,26 @@
             .catch(error => console.error("❌ Помилка запиту:", error));
     });
 });*/
+
+document.querySelectorAll('.navbar-nav .nav-link, .dropdown-item').forEach(link => {
+    link.addEventListener('click', function (event) {
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+
+        // Якщо натиснуто на "Наші функції" - не закриваємо меню
+        if (link.classList.contains('dropdown-toggle')) {
+            event.stopPropagation(); // Запобігає закриттю меню
+            return;
+        }
+
+        // Закриваємо меню для всіх інших пунктів
+        if (navbarToggler && navbarCollapse.classList.contains('show')) {
+            navbarToggler.click();
+        }
+    });
+});
+
+
+
+
+

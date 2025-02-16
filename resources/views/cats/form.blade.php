@@ -1,12 +1,10 @@
 @extends('layouts.msd')
 
 @section('content')
-    <h1>Додати фото котика</h1>
-
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
-
+    <div class="d-flex justify-content-center align-items-center mt-3">
+        <h1>Додати фото котика</h1>
+    </div>
+<div class="px-4">
     <form action="{{ route('cats.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
@@ -23,8 +21,9 @@
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">Фото</label>
-            <input type="file" class="form-control" id="image" name="image" required>
+            <input type="file" class="form-control form-img" id="image" name="image" required>
         </div>
         <button type="submit" class="btn btn-primary">Додати</button>
     </form>
+</div>
 @endsection

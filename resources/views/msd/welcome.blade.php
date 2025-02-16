@@ -2,214 +2,185 @@
 
 @section('title', 'Головна сторінка')
 
-@section('content')
-    <section class="hero bg-light py-5">
-        <div class="container d-flex flex-column-reverse flex-md-row align-items-center justify-content-between">
-            <!-- Текстова частина -->
-            <div class="text-center text-md-start">
-                <h1 class="display-4 fw-bold text-primary">Дізнайся більше про котиків 🐾</h1>
-                <p class="lead text-muted mb-4">Все, що ти хотів знати про котиків, на одному сайті: поради, історії, і наймиліші фото!</p>
-                <a href="#about" class="btn btn-primary btn-lg me-2">Про нас</a>
-                <a href="#contact" class="btn btn-outline-primary btn-lg">Зв'язатися</a>
-            </div>
 
-            <!-- Зображення -->
-            <div>
-                <img src="{{ asset('images/hero-cat.png') }}" alt="Cute Cat" class="img-fluid" style="max-height: 300px;">
-            </div>
+@section('content-top')
+<section class="hero bg-light py-5">
+    <div class="container d-flex flex-column-reverse flex-md-row align-items-center justify-content-between">
+        <!-- Текстова частина -->
+        <div class="text-center text-md-start">
+            <h1 class="display-4 fw-bold text-primary">Дізнайся більше про котиків</h1>
+            <p class="lead text-muted mb-4">Все, що ти хотів знати про котиків, на одному сайті: поради, історії, і наймиліші фото!</p>
+            <a href="{{ route('blog.index') }}" class="btn btn-primary btn-lg me-2">Наш блог</a>
+            <a href="{{ route('cats.index') }}" class="btn btn-outline-primary btn-lg">Галерея котиків</a>
         </div>
-    </section>
 
-    <!-- Секція "Про нас" -->
+        <!-- Зображення -->
+        <div>
+            <img src="{{ asset('images/hero-cat.png') }}" alt="Cute Cat" class="img-fluid" style="max-height: 300px;">
+        </div>
+    </div>
+</section>
+@endsection
+
+
+
+@section('content')
     <section id="about" class="py-5 bg-white">
-        <div class="container text-center">
-            <h2 class="fw-bold text-primary mb-4">Про нас</h2>
-            <p class="text-muted mb-5">
-                Ми створили цей сайт для того, щоб об'єднати всіх любителів котиків 🐱. Тут ви знайдете корисні поради, цікаві факти та зможете поділитися історіями про своїх улюбленців!
-            </p>
+    <div class="container">
+        <h2 class="fw-bold text-primary text-center mb-4">Про нас</h2>
+        <ul class="list-unstyled">
+            <li class="mb-3 text-center">
+                <strong>Наша місія:</strong>
+                <span>“Ми створили цей сайт, щоб зробити світ кращим для котиків і їхніх власників. Наша мета — надихати, ділитися корисною інформацією та створювати спільноту.”</span>
+            </li>
+            <li class="mb-3 text-center">
+                <strong>Що ми пропонуємо:</strong>
+                <span>“На нашому сайті ви знайдете поради для догляду за котами, захопливі історії про пухнастих друзів, а також цікаві факти про їхнє життя.”</span>
+            </li>
+            <li class="mb-3 text-center">
+                <strong>Наша команда:</strong>
+                <span>“Наша команда складається з людей, які щиро люблять котів і прагнуть допомогти кожному знайти відповіді на свої питання.”</span>
+            </li>
+        </ul>
+    </div>
+    <!-- Секція "Про нас" -->
+
+
+
+
+        <div class="container text-center py-5">
             <div class="row align-items-center">
                 <div class="col-md-4 mb-4">
+                    <a href="{{ route('posts.index') }}" class="text-decoration-none">
                     <div class="card shadow-sm border-0">
                         <div class="card-body text-center equal-height">
                             <i class="bi bi-heart text-danger fs-1 mb-3"></i>
                             <h5 class="fw-bold">Любов до котиків</h5>
-                            <p class="text-muted">Коти — наші найкращі друзі. Ми ділимося любов'ю через історії та фото.</p>
+                            <p class="text-muted">Поділіться своєю історією про котиків та надихніть інших любителів!</p>
                         </div>
                     </div>
+                    </a>
                 </div>
+
                 <div class="col-md-4 mb-4">
+                    <a href="{{ route('blog.index') }}" class="text-decoration-none">
                     <div class="card shadow-sm border-0">
                         <div class="card-body text-center equal-height">
                             <i class="bi bi-lightbulb text-warning fs-1 mb-3"></i>
                             <h5 class="fw-bold">Поради</h5>
-                            <p class="text-muted">Корисні поради для догляду, виховання та утримання ваших улюбленців.</p>
+                            <p class="text-muted">Корисні поради для догляду, виховання та утримання ваших улюбленців</p>
                         </div>
                     </div>
+                    </a>
                 </div>
+
                 <div class="col-md-4 mb-4">
+                    <a href="{{ route('register') }}" class="text-decoration-none">
                     <div class="card shadow-sm border-0">
                         <div class="card-body text-center equal-height">
                             <i class="bi bi-people text-primary fs-1 mb-3"></i>
                             <h5 class="fw-bold">Спільнота</h5>
-                            <p class="text-muted">Приєднуйтесь до спільноти любителів котиків, спілкуйтесь і діліться історіями.</p>
+                            <p class="text-muted">Приєднуйтесь до спільноти любителів котиків, спілкуйтесь і діліться історіями</p>
                         </div>
                     </div>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
-
-
-    <!-- Секція "Галерея котиків" -->
-    <section id="gallery" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="fw-bold text-center text-primary mb-4">Галерея котиків</h2>
-            <p class="text-muted text-center mb-5">
-                Подивись на наймиліших котиків з нашої спільноти 🐾
-            </p>
-            <div class="row g-4 gallery">
-                <div class="col-md-4">
-                    <div class="card shadow-sm border-0">
-                        <a href="{{ asset('images/cat-1.jpg') }}" data-fancybox="gallery" data-title="Мій милий котик 1">
-                        <img src="{{ asset('images/cat-1.jpg') }}" class="card-img-top rounded" alt="Cute Cat 1">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm border-0">
-                        <a href="{{ asset('images/cat-2.jpg') }}" data-fancybox="gallery" data-title="Мій милий котик 2">
-                        <img src="{{ asset('images/cat-2.jpg') }}" class="card-img-top rounded" alt="Cute Cat 2">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm border-0">
-                        <a href="{{ asset('images/cat-3.jpg') }}" data-fancybox="gallery" data-title="Мій милий котик 3">
-                        <img src="{{ asset('images/cat-3.jpg') }}" class="card-img-top rounded" alt="Cute Cat 3">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm border-0">
-                        <a href="{{ asset('images/cat-4.jpg') }}" data-fancybox="gallery" data-title="Мій милий котик 4">
-                        <img src="{{ asset('images/cat-4.jpg') }}" class="card-img-top rounded" alt="Cute Cat 4">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm border-0">
-                        <a href="{{ asset('images/cat-5.jpg') }}" data-fancybox="gallery" data-title="Мій милий котик 5">
-                        <img src="{{ asset('images/cat-5.jpg') }}" class="card-img-top rounded" alt="Cute Cat 5">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm border-0">
-                        <a href="{{ asset('images/cat-6.jpg') }}" data-fancybox="gallery" data-title="Мій милий котик 6">
-                        <img src="{{ asset('images/cat-6.jpg') }}" class="card-img-top rounded" alt="Cute Cat 6">
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="py-5 bg-white">
-        <div class="container text-center">
-            <h2 class="fw-bold text-primary mb-4">Добав свого котика до нас нас в галерею!</h2>
-            <p class="text-muted mb-3">
-                Ми створили форму, щоб ви змогли добавити свої котиків🐱
-            </p>
-            <div class="align-items-center">
-                <a href="{{ route('cats.form') }}" class="btn btn-outline-primary btn-lg">Заповнити</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Секція "Контакти" -->
-    <section id="contact" class="py-5 bg-light">
-        @if (session('success'))
-            <div class="alert alert-success text-center">
-                {{ session('success') }}
-            </div>
-        @endif
-        <div class="container">
-            <h2 class="fw-bold text-center text-primary mb-4">Контакти</h2>
-            <p class="text-muted text-center mb-5">
-                Зв’яжіться з нами, якщо у вас є запитання або ви хочете поділитися історією про свого улюбленця 🐾
-            </p>
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <form action="{{ route('contact.submit') }}" method="POST" class="shadow-sm p-4 rounded bg-white">
-                        @csrf
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Ваше ім’я</label>
-                            <input type="text" name="name" id="name" class="form-control" placeholder="Введіть своє ім’я" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Ваш email</label>
-                            <input type="email" name="email" id="email" class="form-control" placeholder="Введіть свою email-адресу" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Ваше повідомлення</label>
-                            <textarea name="message" id="message" rows="5" class="form-control" placeholder="Напишіть своє повідомлення" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-lg w-100">Надіслати</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-5 bg-white">
-        <div class="container text-center">
-            <h2 class="fw-bold text-primary mb-4">Історії про ваших котиків</h2>
-            <p class="text-muted mb-3">
-                Ми створили форму, щоб ви змогли добавити історію про своїх котиків🐱
-            </p>
-            <div class="align-items-center">
-                <a href="{{ route('posts.index') }}" class="btn btn-outline-primary btn-lg">Заповнити</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Секція "Галерея кото-гусі" -->
-    <section id="gallery-goose" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="fw-bold text-center text-primary mb-4">Галерея кото-гусів</h2>
-            <p class="text-muted text-center mb-5">
-                Подивись на наймиліших кото-гусів 🐾
-            </p>
-            <div class="row g-4 gallery">
-                <div class="col-md-4">
-                    <div class="card shadow-sm border-0">
-                        <a href="{{ asset('images/goose-1.jpg') }}" data-fancybox="gallery-goose" data-title="Мій милий гусь 1">
-                            <img src="{{ asset('images/goose-1.jpg') }}" class="card-img-top rounded" alt="Cute goose 1">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm border-0">
-                        <a href="{{ asset('images/goose-2.jpg') }}" data-fancybox="gallery-goose" data-title="Мій милий гусь 2">
-                            <img src="{{ asset('images/goose-2.jpg') }}" class="card-img-top rounded" alt="Cute goose 2">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm border-0">
-                        <a href="{{ asset('images/goose-3.jpg') }}" data-fancybox="gallery-goose" data-title="Мій милий гусь 3">
-                            <img src="{{ asset('images/goose-3.jpg') }}" class="card-img-top rounded" alt="Cute goose 3">
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <script src="{{ asset('js/fancybox-init.js') }}"></script>
-    <!-- Fancybox JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0.31/dist/fancybox.umd.js"></script>
 @endsection
+
+    @section('content-gallery')
+        <section id="gallery" class="bg-light py-5">
+            <div class="container">
+                <h2 class="fw-bold text-center text-primary mb-4">Галерея котиків</h2>
+                <p class="text-muted text-center mb-5">
+                    Подивись на наймиліших котиків з нашої спільноти 🐾
+                </p>
+                <div class="row g-4 gallery">
+                    @foreach($photos as $photo)
+                    <div class="col-md-4" >
+                        <div class="card shadow-sm border-0">
+                            <a href="{{ asset('storage/' . $photo->image) }}" data-fancybox="gallery" >
+                                <img src="{{ asset('storage/' . $photo->image) }}" class="card-img-top rounded" alt="Cute Cat 1">
+                            </a>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endsection
+
+ @section('content-tt')
+     <section id="faq" class="py-5">
+         <div class="container">
+             <h2 class="fw-bold text-center text-primary mb-4">FAQ (Часті запитання)</h2>
+             <p class="text-muted text-center mb-5">
+                 Тут ви знайдете відповіді на найпоширеніші запитання відвідувачів нашого сайту.
+             </p>
+
+             <div class="accordion" id="faqAccordion">
+                 <!-- Питання 1 -->
+                 <div class="accordion-item">
+                     <h2 class="accordion-header" id="faqHeading1">
+                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="true" aria-controls="faqCollapse1">
+                             Як додати фото котика?
+                         </button>
+                     </h2>
+                     <div id="faqCollapse1" class="accordion-collapse collapse show" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                         <div class="accordion-body">
+                             Щоб додати фото котика, натисніть кнопку <strong ><a href="{{ route('cats.index') }}" class="">"Додати фото"</a></strong> у верхньому меню та завантажте файл із вашого пристрою.
+                         </div>
+                     </div>
+                 </div>
+
+                 <!-- Питання 2 -->
+                 <div class="accordion-item">
+                     <h2 class="accordion-header" id="faqHeading2">
+                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                             Як поділитися історією про котика?
+                         </button>
+                     </h2>
+                     <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                         <div class="accordion-body">
+                             Ви можете поділитися історією у розділі <strong>"Котячі історії"</strong>. Натисніть кнопку "Додати історію" та введіть текст.
+                         </div>
+                     </div>
+                 </div>
+
+                 <!-- Питання 3 -->
+                 <div class="accordion-item">
+                     <h2 class="accordion-header" id="faqHeading3">
+                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
+                             Як знайти поради про догляд за котиками?
+                         </button>
+                     </h2>
+                     <div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faqHeading3" data-bs-parent="#faqAccordion">
+                         <div class="accordion-body">
+                             У розділі <strong>"Корисні статті"</strong> ми публікуємо найкращі поради для догляду, виховання та утримання котиків.
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </section>
+ @endsection
+
+@section('content-rr')
+<section id="contacts" class="py-5 bg-light">
+         <div class="container text-center">
+             <h2 class="fw-bold text-primary mb-4">Зв'яжіться з нами</h2>
+             <p class="text-muted mb-4">
+                 Якщо у вас є запитання чи пропозиції, ми завжди на зв'язку!
+             </p>
+             <div class="shadow-sm p-4 bg-white rounded mx-auto" style="max-width: 500px;">
+                 <p class="mb-3"><strong>Телефон:</strong> +380 12 345 6789</p>
+                 <p class="mb-3"><strong>Email:</strong> <a href="mailto:info@catsite.com" class="text-decoration-none text-primary">info@catsite.com</a></p>
+                 <p class="mb-0"><strong>Адреса:</strong> вул. Муркотиків, 10, Київ, Україна</p>
+             </div>
+         </div>
+     </section>
+@endsection
+
 

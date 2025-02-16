@@ -1,10 +1,14 @@
 @extends('layouts.msd')
 
 @section('content')
-    <h1 class="mt-2">Галерея котиків</h1>
+    <div class="d-flex justify-content-center align-items-center flex-column mt-2">
+        <h1>Галерея котиків</h1>
+        <a href="{{ route('cats.form') }}" class="btn btn-outline-primary btn-lg  mb-3">Добавити свого котика</a>
+    </div>
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
+
     <!-- Фільтрація -->
     <div class="mb-3">
         <a href="{{ route('cats.index') }}" class="btn btn-secondary">Усі</a>
@@ -12,6 +16,7 @@
         <a href="{{ route('cats.index', ['category' => 'Вуличні котики']) }}" class="btn btn-primary">Вуличні котики</a>
         <a href="{{ route('cats.index', ['category' => 'Кумедні моменти']) }}" class="btn btn-primary">Кумедні моменти</a>
     </div>
+
 
     <!-- Галерея -->
     <div class="row">
