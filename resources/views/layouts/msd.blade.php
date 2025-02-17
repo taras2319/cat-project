@@ -17,7 +17,7 @@
 <body >
 
 <!-- Header -->
-<header class="fixed-top navbar navbar-expand-lg bg-white shadow-sm py-3">
+<header class=" navbar navbar-expand-lg bg-white shadow-sm py-3">
     <div class="container">
         <!-- Логотип і Назва -->
         <a href="{{ route('home') }}" class="navbar-brand d-flex align-items-center">
@@ -102,8 +102,11 @@
 </div>
 
 @yield('content-rr')
+
+    <button id="scrollToTop" class="scroll-to-top me-2 me-lg-4">↑</button>
+
 <!-- Footer -->
-<footer class="bg-dark text-white text-center py-3 mt-4">
+<footer class="bg-dark text-white text-center py-3 ">
     <p>© {{ date('Y') }} Мій сайт. Усі права захищено.</p>
 </footer>
 

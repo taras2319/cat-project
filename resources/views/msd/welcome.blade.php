@@ -25,7 +25,7 @@
 
 
 @section('content')
-    <section id="about" class="py-5 bg-white">
+    <section id="about" class="py-5 bg-white scroll-animation">
     <div class="container">
         <h2 class="fw-bold text-primary text-center mb-4">Про нас</h2>
         <ul class="list-unstyled">
@@ -91,7 +91,7 @@
 @endsection
 
     @section('content-gallery')
-        <section id="gallery" class="bg-light py-5">
+        <section id="gallery" class="bg-light py-5 scroll-animation">
             <div class="container">
                 <h2 class="fw-bold text-center text-primary mb-4">Галерея котиків</h2>
                 <p class="text-muted text-center mb-5">
@@ -181,6 +181,7 @@
              </div>
          </div>
      </section>
+
 @endsection
 
 
