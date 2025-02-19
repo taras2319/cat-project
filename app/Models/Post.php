@@ -8,6 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
+    protected $connection = 'mysql';
+    protected $table = 'posts';
+    protected $fillable = ['title', 'content', 'image', 'author_id', 'status', 'likes'];
 
-    protected $fillable = ['title', 'content'];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function getTranslationsOf()
+    {
+        return null;
+    }
+
+
 }

@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
     const scrollToTopBtn = document.getElementById("scrollToTop");
-    const lastSection = document.querySelector("#contacts"); // Або вкажи останній блок
+    const lastSection = document.querySelector("footer"); // Або вкажи останній блок
 
     function checkLastSectionVisibility() {
         const rect = lastSection.getBoundingClientRect();

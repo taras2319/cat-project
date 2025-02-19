@@ -93,11 +93,15 @@ header img {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Більша тінь */
 }
 
-#gallery img {
-    border-radius: 10px; /* Округлені кути */
+#modalImg img.img-fluid,
+#postsList img.card-img-top,
+#gallery img.card-img-top {
+    border-radius: 10px;
     max-height: 300px;
-    object-fit: cover; /* Зображення завжди заповнює картку */
+    object-fit: cover;
 }
+
+
 .hero img {
     max-width: 100%; /* Зображення повністю адаптивне */
     border-radius: 10px; /* Злегка округлені краї */
@@ -215,4 +219,7 @@ body {
 .scroll-to-top.show {
     opacity: 0.4; /* Робимо кнопку видимою */
     pointer-events: auto; /* Увімкнення клікабельності */
+}
+.content-top {
+    margin-top: 6rem;
 }

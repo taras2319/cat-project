@@ -26,8 +26,7 @@ class RejectAction extends AbstractAction
 
     public function getDefaultRoute()
     {
-// Маршрут, який буде викликано
-        return route('photos.reject', $this->data->id);
+        return route($this->data->getTable() . '.reject', $this->data->id);
     }
 
     public function shouldActionDisplayOnRow($row)

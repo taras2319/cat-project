@@ -26,9 +26,9 @@ class ApproveAction extends AbstractAction
 
     public function getDefaultRoute()
     {
-// Маршрут, який буде викликано
-        return route('photos.approve', $this->data->id);
+        return route($this->data->getTable() . '.approve', $this->data->id);
     }
+
 
     public function shouldActionDisplayOnRow($row)
     {

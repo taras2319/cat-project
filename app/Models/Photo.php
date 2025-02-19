@@ -8,14 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Photo extends Model
 {
     use HasFactory;
-
+    protected $connection = 'mysql';
+    protected $table = 'photos';
     protected $fillable = ['title', 'image', 'status', 'user_id', 'category'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-
+    public function getTranslationsOf()
+    {
+        return null;
+    }
 
 }
 

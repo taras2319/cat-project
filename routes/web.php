@@ -11,13 +11,16 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 use App\Http\Controllers\PostController;
 
 
+
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index'); // Показати всі пости
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store'); // Зберегти новий пост
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show'); // Показати один пост
 Route::get('/{post}/edit', [PostController::class, 'edit'])->name('posts.edit'); // Форма редагування
 Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update'); // Оновити пост
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
-
+Route::post('/posts/{id}/like', [PostController::class, 'like'])->name('posts.like');
+Route::get('/admin/posts/{id}/approve', [PostController::class, 'approve'])->name('posts.approve');
+Route::get('/admin/posts/{id}/reject', [PostController::class, 'reject'])->name('posts.reject');
 
 
 use App\Http\Controllers\ContactController;
@@ -33,9 +36,11 @@ Route::post('/cats', [PhotoController::class, 'store'])->name('cats.store');
 Route::get('/admin/photos/{id}/approve', [PhotoController::class, 'approve'])->name('photos.approve');
 Route::get('/admin/photos/{id}/reject', [PhotoController::class, 'reject'])->name('photos.reject');
 
-Route::get('/dashboard', function () {
-    return view('msd.welcome');
-})->middleware(['auth', 'verified'])->name('dashboard');
+use App\Http\Controllers\DashboardController;
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');

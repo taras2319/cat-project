@@ -56,7 +56,7 @@
 
     <!-- Test Master File -->
 </head>
-
+<h1>222</h1>
 <body class="voyager @if(isset($dataType) && isset($dataType->slug)){{ $dataType->slug }}@endif">
 <!-- Test Master File -->
 <div id="voyager-loader">

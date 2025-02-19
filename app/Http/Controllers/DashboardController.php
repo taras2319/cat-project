@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Gallery;
-class HomeController extends Controller
+use Illuminate\Http\Request;
+
+class DashboardController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
+        // Отримуємо список фото (якщо потрібно)
         $photos = Gallery::orderBy('id', 'asc')->get();
         return view('msd.welcome', compact('photos'));
 
     }
 }
+

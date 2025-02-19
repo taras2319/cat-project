@@ -3,22 +3,40 @@
 @section('title', 'Список постів')
 
 @section('content')
-    @if (session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
-    <div class="d-flex flex-column justify-content-center align-items-center mb-4">
+
+    <div class="d-flex justify-content-center align-items-center flex-column mt-2">
         <!-- Заголовок -->
-        <div class="col-md-8">
-            <h1 class="fw-bold text-primary mb-2 mt-2">Список постів</h1>
-        </div>
+        <h1>Історії користувачів</h1>
         <!-- Кнопка -->
-        <div class="col-md-4 text-md-end text-center">
-            <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#postModal">Додати пост</button>
-        </div>
+        <button class="btn btn-outline-primary btn-lg  mb-3" data-bs-toggle="modal" data-bs-target="#postModal">Додати
+            історію
+        </button>
     </div>
 
+    <!-- Displaying posts in cards -->
+    <div class="row" id="postsList">
+        @foreach($posts as $post)
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card shadow-sm border-0">
+                    <img src="{{ asset('storage/'.$post->image) }}" class="card-img-top rounded" alt="Фото котика">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $post->title }}</h5>
+                        <p class="card-text text-muted">{{ Str::limit(strip_tags($post->content), 100, '...') }}</p>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#viewStoryModal{{$post->id}}">Переглянути
+                            </button>
+                            <button class="btn btn-outline-danger btn-sm like-button" data-id="{{ $post->id }}">
+                                ❤️ <span class="likes-count">{{ $post->likes }}</span>
+                            </button>
 
-    <!-- Модальне вікно -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    <!-- Модальне вікно добавляння постів -->
     <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -28,63 +46,53 @@
                 </div>
                 <div class="modal-body">
                     @csrf
-                    <form id="postForm">
+                    <form id="postForm" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="postTitle" class="form-label">Заголовок</label>
                             <input type="text" id="postTitle" name="title" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label for="postContent" class="form-label">Контент</label>
-                            <textarea id="postContent" name="content" class="form-control" required></textarea>
+                            <textarea id="postContent" name="content" class="richTextBox"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-success">Додати пост</button>
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Фото</label>
+                            <input type="file" class="form-control" id="image" name="image" required>
+                        </div>
+                        <button type="submit" class="btn btn-success w-50">Опублікувати</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Модальне вікно для перегляду поста -->
-    <div class="modal fade" id="viewPostModal" tabindex="-1" aria-labelledby="viewPostModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="viewPostModalLabel">Деталі поста</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрити"></button>
-                </div>
-                <div class="modal-body">
-                    <h3 id="viewPostTitle"></h3>
-                    <p id="viewPostContent"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Displaying posts in cards -->
-    <div class="row" id="postsList">
-        @foreach($posts as $post)
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card shadow-sm border-0">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary">{{ $post->title }}</h5>
-                        <p class="card-text text-muted">{{ Str::limit($post->content, 100, '...')}}</p>
-
-                        <div class="d-flex justify-content-around gap-3 mt-3">
-                            <button class="view-post btn btn-info btn-sm" id="postView" data-id="{{ $post->id }}" data-bs-toggle="modal" data-bs-target="#viewPostModal">👀 Переглянути</button>
-                            <a href="{{ route('posts.edit', $post) }}" class="btn btn-warning btn-sm">✏️ Редагувати</a>
-
-                            <form action="{{ route('posts.destroy', $post) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Ви впевнені?')">🗑️ Видалити</button>
-                            </form>
+    <!-- Модальне вікно перегляду історії -->
+    @foreach($posts as $post)
+        <div class="modal fade" id="viewStoryModal{{$post->id}}" tabindex="-1" aria-labelledby="storyLabel{{$post->id}}"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="storyLabel{{$post->id}}">{{ $post->title }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="modalImg">
+                        <div class="d-flex justify-content-center">
+                        <img src="{{ asset('storage/'.$post->image) }}" class="img-fluid rounded mb-3"
+                             alt="Фото котика">
                         </div>
+                        <p>{!! $post->content !!}</p>
+                        <p class="text-muted">Опубліковано: {{ $post->created_at->diffForHumans() }}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline-danger btn-sm like-button" data-id="{{ $post->id }}">
+                            ❤️ <span class="likes-count">{{ $post->likes }}</span>
+                        </button>
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Закрити</button>
                     </div>
                 </div>
             </div>
-        @endforeach
-    </div>
-
+        </div>
+    @endforeach
 
     <div class="d-flex justify-content-center mt-4">
         {{ $posts->links() }}
@@ -92,5 +100,17 @@
 
     <script src="{{ asset('js/createPostModal.js') }}"></script>
     <script src="{{ asset('js/viewPostModal.js') }}"></script>
+    <script src="{{ asset('js/likesPostModal.js') }}"></script>
+    <!-- connect tinymce -->
+    <script src="https://cdn.tiny.cloud/1/210cao8wjlufzfingpj8zna58zauj0n8eggbqkv44kh1o88f/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="{{ asset('js/tinyMCE.js') }}?v={{ time() }}"></script>
 @endsection
+
+
+
+
+
+
+
+
 
