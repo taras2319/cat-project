@@ -9,7 +9,7 @@
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
-
+    <!-- Фільтрація -->
     <!-- Фільтрація -->
     <div class="mb-3">
         <a href="{{ route('cats.index') }}" class="btn btn-secondary">Усі</a>
